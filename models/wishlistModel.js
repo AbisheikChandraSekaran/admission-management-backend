@@ -5,15 +5,20 @@ const wishlistSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    collegeId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'College',
-    },
-    courseId: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Course',
-        
-}]});
+    wishlist: [
+        {
+          collegeId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'College',
+            required: true
+          },
+          courses: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Course'
+          }]
+        }
+      ]
+    });
 
 const wishlist = mongoose.model("wishlist", wishlistSchema);
 module.exports = wishlist;
